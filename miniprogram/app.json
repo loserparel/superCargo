@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/sale/sale",
+    "pages/stock/stock",
+    "pages/addcargo/addcargo",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "百货帮",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "position": "bottom",
+    "backgroundColor": "#ffffff",
+    "color": "#dddddd",
+    "selectedColor": "#0485d0",
+    "list": [
+      {
+        "pagePath": "pages/sale/sale",
+        "iconPath": "images/sale.png",
+        "selectedIconPath": "images/sale2.png",
+        "text": "前台"
+      },
+      {
+        "pagePath": "pages/stock/stock",
+        "iconPath": "images/putin.png",
+        "selectedIconPath": "images/putin2.png",
+        "text": "入库"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
