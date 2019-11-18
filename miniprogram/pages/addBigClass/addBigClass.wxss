@@ -1,0 +1,3 @@
+.weui-btn-area{
+  border-bottom: none;
+}

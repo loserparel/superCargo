@@ -1,0 +1,29 @@
+<view class="page">
+  <view class="weui-form">
+    <view class="weui-form__text-area">
+      <view class="weui-form__title">新增商品大类信息</view>
+      <view class="page__desc">商品大类信息为商品所属种类信息，如烟、酒、零食、学习文具等</view>
+    </view>
+    <view class="weui-form__control-area">
+        <view class="weui-cells__group weui-cells__group_form">
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label">商品大类名称</label></view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" type="text" placeholder="请输入商品大类名称" bindinput="inputBigClassName"/>
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label">优先级</label></view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" type="number" placeholder="请输入商品大类显示优先级" bindinput="inputPriority"/>
+            </view>
+          </view>
+          <view class="weui-cell">
+          </view>
+          <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="submitAddBigClass">确定</button>
+          </view>
+        </view>
+      </view>
+  </view>
+</view>

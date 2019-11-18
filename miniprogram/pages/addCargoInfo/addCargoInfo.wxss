@@ -1,0 +1,4 @@
+/* pages/stock/addCargoInfo/addCargoInfo.wxss */
+.weui-cells .weui-cells_form{
+  border-bottom: none;
+}

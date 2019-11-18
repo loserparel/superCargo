@@ -1,0 +1,18 @@
+<view class="kind-list__item-bd" style="height:100%;">
+  <view class="weui-cells">
+    <block wx:for="{{list}}"  wx:key="_id">
+      <navigator url="{{manageUrl}}" class="weui-cell weui-cell_access">
+        <block  wx:if="{{type == 'bigClass'}}">
+          <view class="weui-cell__bd">{{item.bigClassName}}</view>
+        </block >
+        <block wx:elif="{{type == 'cargo'}}">
+            <view class="weui-cell__bd">{{item.cargoName}}</view>
+        </block>
+        <block wx:else>
+            <view class="weui-cell__bd">{{item.stockName}}</view>
+        </block>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </block>
+  </view>
+</view>
