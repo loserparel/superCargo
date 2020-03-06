@@ -1,1 +1,12 @@
-/* pages/stock/stock.wxss */
+.weui-form__control-area{
+  margin:0px;
+}
+.random-image{
+  margin-top:5px;
+  width: 15px;
+  height: 15px;
+}
+
+.random_btn{
+  width: 40px;
+}

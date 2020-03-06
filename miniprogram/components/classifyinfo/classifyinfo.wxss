@@ -1,0 +1,139 @@
+@import '../../style/weui.wxss';
+@import '../../style/iconfont.wxss';
+.weui-loadmore {
+  width: 100%;
+  font-size: 25rpx;
+  text-align: center;
+  margin:0.5em auto;
+}
+
+.weui-loading {
+  width: 50rpx;
+  height: 50rpx;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-animation: weuiLoading 1s steps(12, end) infinite;
+  animation: weuiLoading 1s steps(12, end) infinite;
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTlFOUU5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTMwKSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iIzk4OTY5NyIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxMDUuOTggNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjOUI5OTlBIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDYwIDc1Ljk4IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0EzQTFBMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2NSA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNBQkE5QUEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDU4LjY2IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0IyQjJCMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgxNTAgNTQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjQkFCOEI5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA1MCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDMkMwQzEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1MCA0NS45OCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDQkNCQ0IiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyMCA0MS4zNCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNEMkQyRDIiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDM1IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0RBREFEQSIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgtNjAgMjQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTJFMkUyIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0zMCAtNS45OCA2NSkiLz48L3N2Zz4=) no-repeat;
+  background-size: 100%;
+}
+
+.weui-loadmore-tips {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.bigclass-list .bigclass-item {
+  position: relative;
+  width: 100vw;
+  border-bottom: 2rpx solid #E9E9E9;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.bigclass-list .bigclass-item movable-area {
+  height: 120rpx;
+  width: calc(100vw - 120rpx);
+}
+
+.bigclass-list .bigclass-item movable-view {
+  height: 120rpx;
+  width: 100vw;
+  background: #fff;
+  z-index: 2;
+}
+
+.bigclass-list .bigclass-item .delete-btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0; 
+  width: 120rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  line-height: 120rpx;
+  z-index: 1;
+  background: #E66671;
+  text-align: center;
+}
+
+.bigclass-list .bigclass-item-wrap {
+  position: relative;
+  display: flex;
+  height:100%;
+  align-items: center;
+  padding: 0rpx 0 0rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.bigclass-list .bigclass-add-wrap{
+  position: relative;
+  display: flex;
+  height:120rpx;
+  align-items: center;
+  padding: 0rpx 0 0rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.icon-quxiao{
+  color: red;
+  font-size: 42rpx;
+}
+
+.icon-yixuanze{
+  color: #2aa515;
+  font-size: 42rpx;
+}
+
+.bigclass-list .bigclass-add-wrap .bigclass-add-item{
+  flex: 8;
+  overflow: hidden;
+  display: flex;
+}
+
+.bigclass-add-item-name{
+  width: 100%;
+}
+
+.bigclass-list .bigclass-add-wrap .bigclass-add-item-cancel{
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+}
+
+.bigclass-list .bigclass-add-wrap .bigclass-add-item-sure{
+  flex: 1.5;
+  overflow: hidden;
+  display: flex;
+  justify-content:center;
+}
+
+.bigclass-list .bigclass-item-wrap .bigclass-movable-item {
+  flex: 1.5;
+  overflow: hidden;
+  display: flex;
+}
+
+.bigclass-list .bigclass-item-wrap .bigclass-movable-item-name {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #71747A;
+  margin-right: 10rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  align-items: center;
+  justify-items: center;
+  flex: 7;
+}
+.bigclass-list .bigclass-item-wrap .bigclass-movable-item-totop{
+  flex: 3;
+}
+
+.bigclass-list .bigclass-item-wrap .bigclass-movable-item-amount {
+  flex: 0 0 auto;
+  padding-right: 80rpx;
+  position: relative;
+}
+

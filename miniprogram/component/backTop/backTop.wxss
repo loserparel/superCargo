@@ -1,0 +1,22 @@
+.back-top {
+    position: fixed;
+    right: 20rpx;
+    bottom: 20rpx;
+    z-index: 4;
+}
+
+.backTopBg {
+    background-color: #ffffff;
+    width: 86rpx;
+    height: 86rpx;
+    border-radius: 100%;
+    border: 1rpx solid rgba(204,204,204,1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backTopBg .cuIcon-top{
+    font-size: 40rpx;
+    color: #00CD00;
+}

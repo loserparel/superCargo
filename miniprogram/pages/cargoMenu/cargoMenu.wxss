@@ -1,0 +1,9 @@
+/* pages/cargoMenu/cargoMenu.wxss */
+.weui-media-box__desc{
+  margin-top: 5px;
+  display: flex;
+  font-size: 12px;
+}
+.weui_num__text{
+  font-weight: bold;
+}

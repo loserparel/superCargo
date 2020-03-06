@@ -1,0 +1,43 @@
+page{
+  background-color:#fff;
+}
+.weui-btn-area{
+  margin : 28px 16px 8px;
+}
+
+.btn-login-enable {
+    color: #ffffff;
+    background: linear-gradient(90deg,rgba(36,215,78,1) 0%,rgba(46,186,90,1) 100%);
+    border-radius: 45px;
+    padding: 0rpx;
+    text-align: center;
+    font-size: 36rpx;
+    display: block;
+    margin-left: 40rpx;
+    margin-right: 40rpx;
+    margin-top: 40rpx;
+    line-height: 92rpx;
+}
+
+.btn-login-enable::after {
+    border: 1px solid #3CB963;
+}
+
+.btn-login-unenable {
+    color: #fff;
+    background: #DCDCDC !important;
+    border-radius: 45px;
+    font-size: 36rpx;
+    padding: 0rpx 0rpx;
+    text-align: center;
+    height: 92rpx;
+    line-height: 92rpx;
+    display: block;
+    margin-left: 40rpx;
+    margin-right: 40rpx;
+    margin-top: 40rpx;
+}
+
+.btn-login-unenable::after {
+    border: 1px solid #DCDCDC;
+}

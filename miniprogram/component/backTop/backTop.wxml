@@ -1,0 +1,7 @@
+<template name="backTop">
+    <view catchtap="_backTopGo" class="back-top" hidden="{{is_hide}}" style="{{'bottom:'+style_bottom||'0'}}">
+        <view class="backTopBg">
+            <text class="cuIcon-top"></text>
+        </view>
+    </view>
+</template>

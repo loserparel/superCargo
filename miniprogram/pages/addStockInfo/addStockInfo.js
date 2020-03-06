@@ -1,6 +1,6 @@
 // pages/stock/addStockInfo/addStockInfo.js
-var util = require('../../utils/util.js')
-var app = getApp();
+var util = require('../../utils/util.js'),
+constant = require('../../const/constant.js'), app = getApp();
 wx.cloud.init({
   env: app.globalData.env
 })
@@ -95,29 +95,33 @@ Page({
   getCargoInfo: function () {
     var that = this;
     try {
-      db.collection('cargo').where({
-        _openid: app.globalData.openid
-      }).orderBy('_id', 'desc')
-        .get({
-          success: function (res) {
-            console.log(res.data)
-            console.log(that.data.cargoList)
-            that.data.cargoInfoList = res.data;
-            that.data.cargoList.push('请选择');
-            console.log(that.data.cargoList)
-            for (var index in res.data) {
-              console.log(index)
-              that.data.cargoList.push(res.data[index].cargoName)
-            }
-            console.log(that.data.cargoList)
-            that.setData({
-              cargoList: that.data.cargoList,
-              cargoInfoList: that.data.cargoInfoList
-            })
-          },
-          fail: function (event) {
+      wx.cloud.callFunction({
+        name: 'dbapi',
+        data: {
+          operation: 'query',
+          tabName: constant.CONSTANT.CARGO_TAB,
+          condition: { userMp: app.globalData.userMp}
+        },
+        success:function(res){
+          console.log(res.result)
+          console.log(that.data.cargoList)
+          that.data.cargoInfoList = res.data;
+          that.data.cargoList.push('请选择');
+          console.log(that.data.cargoList)
+          for (var index in res.data) {
+            console.log(index)
+            that.data.cargoList.push(res.result[index].cargoName)
           }
-        })
+          console.log(that.data.cargoList)
+          that.setData({
+            cargoList: that.data.cargoList,
+            cargoInfoList: that.data.cargoInfoList
+          })
+        },          
+        fail: function (event) {
+
+        }
+      })
     } catch (e) {
       console.error("查询商品信息异常" + e);
     }
@@ -173,14 +177,15 @@ Page({
     }
     db.collection('stock').add({
       data: {
+        userMp:app.globalData.userMp,
         stockNo: this.data.stockNo,
         stockName: this.data.stockName,
         bigClass: this.data.bigClass,
         purPrice: this.data.stockPurPrice,
         price: this.data.stockPrice,
         stat: 'N',
-        inputDate: util.formatDate(new Date()),
-        inputTime: util.formatTime(new Date()),
+        transDate: util.formatDate(new Date()),
+        transTime: util.formatTime(new Date()),
         done: false
       },
       success: function (res) {

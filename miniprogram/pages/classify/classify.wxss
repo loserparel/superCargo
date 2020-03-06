@@ -1,0 +1,126 @@
+/* pages/stock/stock.wxss */
+page{background-color:#EDEDED;}
+
+.weui-navbar{
+  position: fixed;
+  width: 100%;
+  top:0px;
+}
+
+.weui-search-bar{
+  position: fixed;
+  width: 100%;
+  top:56px;
+  z-index:100;
+}
+.add_card_img {
+  width: 20px;
+  height: 20px;
+  margin: 5px 0px 5px 5px;
+  vertical-align: middle;
+}
+.page__bd{
+    height: 100%;
+}
+.weui-tab__content{
+    text-align: center;
+}
+
+.menu_model{
+  display: flex;
+  position: fixed;
+  top:100px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.01);
+  z-index: 500;
+}
+
+.menu {
+  position: relative;
+  text-align: center;
+  top: 40rpx;
+}
+.menu .tooltip {
+  position: absolute;
+  padding: 10px;
+  box-shadow: 0 8px 13px rgba(0, 0, 0, 0.36), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  background-color: #f5f6f7;
+  border-bottom: 2px solid #f5f6f7;
+  border-radius: 3px;
+  transition: all 200ms ease-in-out, visibility 0ms;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  width: 80px;
+}
+.menu .tooltip:before, .menu .tooltip:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 60px;
+  top: -30px;
+  border: solid 15px transparent;
+  border-bottom-color: #f5f6f7;
+}
+.menu .tooltip:before {
+  top: -30px;
+  border-bottom-color: #f5f6f7;
+}
+
+.show.menu .tooltip {
+  display: block;
+  visibility: visible;
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+  animation: wobble 700ms;
+  opacity: 1;
+}
+
+.menu.show .footer-nav-link {
+  background-color: rgba(180, 181, 183, 0.5);
+}
+
+.menu li {
+  list-style: none;
+  display: block;
+  width: 100%;
+}
+
+.menu li a {
+  display: block;
+  width: 100%;
+  padding: 8px 15px;
+  font-size: .75em;
+  box-sizing: border-box;
+}
+
+.menu li a:hover {
+  background-color: rgba(180, 181, 183, 0.5);
+}
+
+.menu.show .footer-nav-link {
+  background-color: rgba(0, 36, 61, 0.5);
+}
+
+.menu li {
+  list-style: none;
+  display: block;
+  width: 100%;
+}
+
+.menu li a {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 8px 15px;
+  border-bottom: 1px solid #ffffff;
+}
+
+.menu li a:hover {
+  background-color: rgba(180, 182, 183, 0.5);
+}
+
+.weui-tab__panel{
+  -webkit-overflow-scrolling:unset;
+}

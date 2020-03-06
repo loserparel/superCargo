@@ -1,0 +1,45 @@
+@import '../../style/iconfont.wxss';
+.global-origin-price {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.price-text-big {
+    line-height: 1;
+}
+
+.global-price {
+    font-weight: bold;
+    vertical-align: baseline;
+}
+
+.origin-price {
+    color: #B2B2B2;
+    text-decoration: line-through;
+}
+
+
+
+.global-price .free-price-gift {
+    color: rgba(254,98,99,1);
+    margin-left: 12rpx;
+    height: 40rpx;
+    font-size: 24rpx;
+    font-weight: 500;
+    line-height: 40rpx;
+    text-decoration: none;
+}
+
+.line-through-style {
+    position: relative;
+}
+
+.line-through-style:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    border-top: 1px solid black;
+}

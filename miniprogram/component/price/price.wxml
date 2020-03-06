@@ -1,0 +1,67 @@
+<template name="priceWithWidth">
+    <text style="display:block;max-width: 160rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: {{color||'#FE6263'}}">
+        <text class="iconfont icon-x" style="font-size: {{rmb/1.2||24}}rpx"></text>
+        <text class="price-text-big" style="font-size: {{integer||34}}rpx">{{util.point(price||'0.00',0,tail)}}</text>
+        <text class="price-text-small" style="font-size: {{decimal||24}}rpx" wx:if="{{util.point(price||'0.00',1,tail).length>0}}">.{{util.point(price||'0.00',1,tail)}}
+        </text>
+    </text>
+</template>
+<template name="price">
+    <view class="global-price" style="color: {{color||'#FE6263'}}">
+        <block wx:if="{{!showGiftText}}">
+            <text class="iconfont icon-jine" style="font-size: {{rmb/1.2||24}}rpx"></text>
+            <text class="price-text-big" style="font-size: {{integer||34}}rpx">{{util.point(price||'0.00',0,tail)}}</text>
+            <text class="price-text-small" style="font-size: {{decimal||24}}rpx" wx:if="{{util.point(price||'0.00',1,tail).length>0}}">.{{util.point(price||'0.00',1,tail)}}</text>
+            <text class="vip-small-tag" wx:if="{{vip===1}}"></text>
+            <text class="vip-big-tag" wx:if="{{vip===2}}"></text>
+        </block>
+        <text class="line-through-style" wx:if="{{showGiftText}}">
+            <text class="iconfont icon-x" style="font-size: 21rpx"></text>
+            <text class="price-text-big" style="font-size: 26rpx">{{price}}</text>
+        </text>
+        <text class="free-price-gift" wx:if="{{showGiftText}}">赠品</text>
+    </view>
+</template>
+<template name="origin-price">
+    <text class="origin-price" wx:if="{{utilPrice.parseFloatPrice(price,origin_price)}}">
+        <text class="iconfont icon-x" style="font-size: {{font_size/1.2||20}}rpx;color:{{color||'#B2B2B2'}};text-decoration:line-through;">{{origin_price||'0.00'}}
+        </text>
+    </text>
+</template>
+<template name="global-origin-price">
+    <view class="global-origin-price">
+        <template is="price" data="{{price:price,integer:integer,decimal:decimal,showGiftText:showGiftText,color:showGiftText?'#333333':''}}"></template>
+        <view style="margin-left: 10rpx;" wx:if="{{utilPrice.parseFloatPrice(price,origin_price)&&!showGiftText}}">
+            <template is="origin-price" data="{{price:price,origin_price:origin_price}}"></template>
+        </view>
+    </view>
+</template>
+<wxs module="utilPrice">
+var parseFloatPrice = (function(price, origin_price) {
+    if (parseFloat(origin_price) > parseFloat(price)) {
+        return (true)
+    };
+    return (false)
+});
+module.exports.parseFloatPrice = parseFloatPrice;
+</wxs>
+<wxs module="util">
+var splitPoint = (function(str, i, tail) {
+    tail = undefined === tail ? true : tail;
+    if (typeof str === "string") {
+        var money = parseFloat(str).toFixed(2);
+        var moneyStr = money.toString(10);
+        if (!tail) {
+            moneyStr = parseFloat(moneyStr).toString(10)
+        };
+        return (moneyStr.split('.')[((nt_0 = (i), null == nt_0 ? undefined : 'number' === typeof nt_0 ? nt_0 : "" + nt_0))])
+    } else {
+        var newStr = str.toFixed(2).toString(10);
+        if (!tail) {
+            newStr = parseFloat(newStr).toString(10)
+        };
+        return (newStr.split('.')[((nt_1 = (i), null == nt_1 ? undefined : 'number' === typeof nt_1 ? nt_1 : "" + nt_1))])
+    }
+});
+module.exports.point = splitPoint;
+</wxs>

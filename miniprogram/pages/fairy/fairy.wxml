@@ -1,0 +1,11 @@
+
+<view class="text-view">
+  <image src="../../images/jj.png" mode="aspectFit" class="empty_image">
+</image>
+</view>
+<view class="text-view">
+<text class="text-desc">这是一只小狗娃</text>
+</view>
+<!-- <view class="cu-timeline">
+  <view class="cu-time">昨天</view>
+</view> -->

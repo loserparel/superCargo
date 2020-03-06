@@ -1,2 +1,105 @@
-<!--pages/sale/sale.wxml-->
-<text>pages/sale/sale.wxml</text>
+<import src="../../component/price/price.wxml"></import>
+<import src="../../component/loading/loading.wxml"></import>
+<template is="loading" data="{{..._loading_}}"></template>
+<view class="weui-form">
+  <view class="weui-form__text-area">
+    <view class="page__desc">扫描商品条码，统计价格</view>
+    <view class="button-sp-area">
+      <button class="weui-btn mini-btn" size="mini" type="default" bindtap="openCamera" role="button" >扫描商品</button>
+    </view>
+  </view>
+  <view class="kind-list__item-bd">
+    <view class="weui-cells" >
+      <block wx:if="{{!cartList || cartList.length < 1}}">
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd" style="margin-left:20px;">暂无结算信息</view>
+        </view>
+      </block>
+      <block wx:for="{{cartList}}" wx:for-item="stock_item"  wx:key="_id">
+          <view  class="weui-cell weui-cell_access cargo-info-item">
+            <view class="cargo-item-cell">
+              <view catchtap="eventCheckStock" class="stock-select" data-cartinfo="{{stock_item}}">
+                <block wx:if="{{!stock_item.is_check}}">
+                  <text class="iconfont icon-weixuanze"></text>
+                </block>
+                <block wx:if="{{!!stock_item.is_check}}">
+                  <view class="check-icon">
+                    <text class="iconfont icon-yixuanze"></text>
+                  </view>
+                </block>
+              </view>
+              <view class="cargo-item-image-cell">
+                <block wx:if="{{stock_item.imagePath && stock_item.imagePath != ''}}">
+                  <image class="cargo-item-image" data-src="{{stock_item.imagePath}}" mode="scaleToFill" src="{{stock_item.imagePath}}" bindtap="previewImg"></image>
+                </block>
+                <block wx:else>
+                  <image class="cargo-item-image" mode="scaleToFill" src="../../images/unknow.png"></image>
+                </block>
+              </view>
+              <view class="cargo-item-info">
+                <view class="cargo-name-info">{{stock_item.stockName}}</view>
+                <view class="cargo-price-info">
+                  <view class="product-price">
+                      <template is="price" data="{{price:stock_item.price*1,color:'#FE6263',rmb:'26',integer:'34',decimal:'24'}}"></template>
+                  </view>
+                  <view class="product-num">
+                    <view class="count-change">
+                      <view catchtap="eventAddCart" class="count-icon" data-count="{{-1}}" data-cartinfo="{{stock_item}}">
+                        <text class="iconfont icon-jianhao {{stock_item.count<1?'subtract-stocknum-disable':'subtract-stocknum-able'}}"></text>
+                        </view>
+                            <input catchtap="eventAddCartInput" class="change-input" disabled="true" type="number" value="{{stock_item.count|0}}"></input>
+                      <view catchtap="eventAddCart" class="count-icon" data-count="{{1}}" data-cartinfo="{{stock_item}}">
+                      <text class="iconfont icon-add add-stocknum-btn"></text>
+                    </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </block>
+    </view>
+  </view>
+  <view class="foot-banner">
+      <view class="foot-left">
+          <view catchtap="eventCheckAllProduct" class="foot-select">
+              <block wx:if="{{!is_all_check}}">
+                  <view>
+                      <text class="iconfont icon-weixuanze"></text>
+                  </view>
+              </block>
+              <block wx:if="{{!!is_all_check}}">
+                  <view class="check-icon">
+                      <text class="iconfont icon-yixuanze"></text>
+                  </view>
+              </block>
+              <view class="select-all">全选</view>
+          </view>
+          <view class="price-content">
+              <view class="price-total {{instant_rebate_money==0?'all-in':''}}">
+                  <text class="total-price-text">合计</text>
+                  <view class="total-price-num">
+                      <template is="price" data="{{price:totalAmount,color:'#FE6263',rmb:'26',integer:'34',decimal:'24'}}"></template>
+                  </view>
+              </view>
+              <view class="price-total-detail" wx:if="{{instant_rebate_money>0}}">
+                  <view class="detail-price-text">
+                      <view class="price-text-label">总额 </view>
+                      <i>
+                          <template is="price" data="{{price:goods_real_money,color:'#333333',rmb:'22',integer:'22',decimal:'22'}}"></template>
+                      </i>
+                  </view>
+                  <view class="detail-price-text">
+                      <view class="price-text-label">立减 </view>
+                      <i>
+                          <template is="price" data="{{price:instant_rebate_money,color:'#333333',rmb:'22',integer:'22',decimal:'22'}}"></template>
+                      </i>
+                  </view>
+              </view>
+          </view>
+      </view>
+      <view catchtap="eventSubmitCart" class="foot-right">
+          <view class="create-submit">结算{{!!cartCount?'('+cartCount+')':''}}</view>
+      </view>
+  </view>
+</view>

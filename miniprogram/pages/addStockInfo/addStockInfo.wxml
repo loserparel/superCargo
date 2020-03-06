@@ -9,13 +9,13 @@
       <view class="weui-form__control-area">
         <view class="weui-cells__group weui-cells__group_form">
             <view class="weui-cell">
-              <view class="weui-cell__hd"><label class="weui-label">商品号</label></view>
+              <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>商品号</label></view>
               <view class="weui-cell__bd">
                   <input class="weui-input" type="number" pattern="[0-9]*" bindinput="inputStockNo" value="{{stockNo}}"/>
               </view>
             </view>
             <view class="weui-cell">
-              <view class="weui-cell__hd"><label class="weui-label">商品名称</label></view>
+              <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>商品名称</label></view>
               <view class="weui-cell__bd text-right">
                 <picker bindchange="bindCargoChange" value="{{index}}" range="{{cargoList}}">
                   <view class="weui-input">{{cargoList[index]}}</view>
@@ -25,15 +25,15 @@
               </view>
             </view>
             <view class="weui-cell">
-              <view class="weui-cell__hd"><label class="weui-label">商品进价</label></view>
+              <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>商品进价</label></view>
               <view class="weui-cell__bd">
-                  <input class="weui-input" type="number"  bindinput="" value="{{stockPurPrice}}"/>
+                  <input class="weui-input" type="digit"  bindinput="" value="{{stockPurPrice}}"/>
               </view>
             </view>
             <view class="weui-cell">
-              <view class="weui-cell__hd"><label class="weui-label">商品售价</label></view>
+              <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>商品售价</label></view>
               <view class="weui-cell__bd">
-                  <input class="weui-input" type="number"  bindinput="" value="{{stockPrice}}"/>
+                  <input class="weui-input" type="digit"  bindinput="" value="{{stockPrice}}"/>
               </view>
             </view>
             <view class="weui-cell">

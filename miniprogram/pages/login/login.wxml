@@ -1,0 +1,40 @@
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__hd">
+            <view class="weui-label">手机号</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" type="number" value="{{usrMp}}" bindinput="getPhoneValue" placeholder="请输入手机号" />
+        </view>
+        <view class="weui-cell__ft" wx:if="{{showClean}}" bindtap="cleanUserMp">
+          <icon size="16" color="#545454" type="cancel" role="img"></icon>
+        </view>
+    </view>
+
+    <view class="weui-cell">
+        <view class="weui-cell__hd">
+            <view class="weui-label">图形验证码</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" maxlength="4" bindinput="inputImgCode" placeholder="请输入图形验证码" value="{{imgCode}}"/>
+        </view>
+        <view class="weui-cell__ft" bindtap="onTap">
+            <canvas style="width:160rpx;height:64rpx;text-align:center;" canvas-id="canvas"></canvas>
+        </view>
+    </view>
+</view>
+<checkbox-group slot="tips" bindchange="bindAgreeChange">
+    <label class="weui-agree" for="weuiAgree">
+        <view class="weui-agree__text">
+            <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+            <view class="weui-agree__checkbox-icon">
+                <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+            </view>
+            阅读并同意<navigator url="{{agreementPath}}" class="weui-agree__link">《百货帮服务协议》</navigator>
+        </view>
+    </label>
+</checkbox-group>
+<view class="weui-btn-area">
+    <button catchgetuserinfo="eventGetUserInfo" class="btn-login-enable" lang="zh_CN" openType="getUserInfo" wx:if="{{enableLogin}}">登录</button>
+    <button class="btn-login-unenable" type="primary" wx:if="{{!enableLogin}}" catchtap="eventGoLogin">注册/登录</button>
+</view>

@@ -1,0 +1,11 @@
+
+@import "../../style/main.wxss";
+.text-view{
+  text-align:center;
+}
+
+.text-desc{
+  color: red;
+  font-weight: 300px;
+  text-align:center;
+}

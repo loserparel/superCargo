@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "stockinfo-component": "/components/stockinfo/stockinfo",
+    "classifyinfo-component": "/components/classifyinfo/classifyinfo"
+  }
+}

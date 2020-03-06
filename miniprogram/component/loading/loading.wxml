@@ -1,0 +1,17 @@
+<template name="isLoadingMore">
+    <view class="is-more is-load" hidden="{{is_hide}}">
+        <view class="load-more-sk-three-bounce">
+            <view class="sk-child sk-bounce1"></view>
+            <view class="sk-child sk-bounce2"></view>
+            <view class="sk-child sk-bounce3"></view>
+        </view>
+    </view>
+</template>
+<template name="loading">
+    <view class="sk-mask" hidden="{{is_hide}}">
+        <view class="sk-three-bounce">
+            <view class="coffee_cup">
+            </view>
+        </view>
+    </view>
+</template>

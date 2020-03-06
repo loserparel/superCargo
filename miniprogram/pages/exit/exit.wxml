@@ -1,0 +1,3 @@
+<view class="page__bd page__bd_spacing">
+  <button class="weui-btn" type="primary" bindtap="exitLogin">退出</button>
+</view>

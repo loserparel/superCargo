@@ -1,0 +1,65 @@
+<import src="../../component/loading/loading.wxml"></import>
+<template is="loading" data="{{..._loading_}}"></template>
+<template name="muTiProductOrder">
+    <view class="one-product-splite">
+        <view style="background: white;overflow: hidden;">
+            <view bindtap="gotoProductDetail" class="product-status-msg" data-order="{{order}}">
+                <text style="color:#666666;font-size: 26rpx;">{{order.orderDate}} {{order.orderTime}}</text>
+            </view>
+            <scroll-view bindtap="gotoProductDetail" class="muti-scroll-view" data-order="{{order}}" scrollX="true">
+                <view class="product-img-frame">
+                    <view wx:for="{{order.orderListTmp}}" wx:for-index="productX" wx:for-item="product" wx:key="{{product._id}}">
+                        <image class="muti-img-list" lazyLoad="true" mode="aspectFill" src="{{product.imagePath}}" style="width:{{product.imgW}}rpx"></image>
+                    </view>
+                </view>
+            </scroll-view>
+            <view class="product-name-frame-detail">
+                <text style="font-size: 26rpx;color:#666666;">共 {{order.cartCount}} 份商品  </text>
+                <text style="font-size: 30rpx;color:#333333;margin-left: 5rpx;">  共计 ¥{{order.totalAmount}}</text>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="oneProductOrder">
+    <view class="one-product-splite">
+        <view style="background: white">
+            <view class="product-status-msg">
+                <text style="color:#666666;font-size: 26rpx;">{{order.orderDate}} {{order.orderTime}}</text>
+            </view>
+            <view bindtap="gotoProductDetail" class="product-name-frame" data-order="{{order}}">
+                <image src="{{order.orderList[0].imagePath}}" style="width: 108rpx; height: 108rpx; background-color: #eeeeee;"></image>
+                <view class="product-name-frame-name">
+                    <view class="product-name-frame-name-frame">
+                        <text class="product-name-frame-name-frame-label">{{order.orderList[0].stockName}}</text>
+                        <text style="color:#333333;font-size: 26rpx;margin-left: 25rpx;">¥{{order.orderList[0].stockPrice||'0'}}</text>
+                    </view>
+                    <text style="color:#999999;font-size: 26rpx;">单价: ¥{{order.orderList[0].stockPrice}}   数量:{{order.orderList[0].count}}</text>
+                </view>
+            </view>
+            <view class="product-name-frame-detail">
+                <text style="font-size: 26rpx;color:#666666;">共 {{order.cartCount}} 份商品  </text>
+                <text style="font-size: 30rpx;color:#333333;margin-left: 5rpx;">  共计 ¥{{order.totalAmount}}</text>
+            </view>
+        </view>
+    </view>
+</template>
+<view  wx:if="{{orders && orders.length > 0}}">
+    <view style="background: white" wx:for="{{orders}}" wx:for-index="idx" wx:for-item="order" wx:key="{{order._id}}">
+        <template is="oneProductOrder" data="{{order:order}}" wx:if="{{order.orderList.length==1}}"></template>
+        <template is="muTiProductOrder" data="{{order:order}}" wx:else></template>
+    </view>
+    <template is="empty" data="{{ src:notInStationSrc,width:326,text:emptys[type] }}" wx:if="{{orders.length==0}}"></template>
+    <view class="history-order-hint" wx:if="{{orders.length&&hasHistoryOrder}}">仅展示近3个月的订单，其余请至APP查看</view>
+</view>
+<view wx:else>
+  <view class="order_empty">
+    <view class="empty_view">
+     <image src="../../images/null.png" class="empty_image">
+     </image>
+    </view>
+    <view class="empty_text">
+      <text>您还没有任何结算信息</text>
+    </view>
+    <button class="weui-btn mini-btn" type="primary" bindtap="gotoSale">去收银台</button>
+  </view>
+</view>

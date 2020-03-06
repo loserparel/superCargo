@@ -1,55 +1,97 @@
-
-<view class="page">
-  <view class="weui-form">
-    <view class="weui-form__text-area">
-      <view class="weui-form__title">新增商品信息</view>
-      <view class="page__desc">商品信息为商品本身属性，如商品名称、进价、售价、生产日期、保质期等</view>
-      <view class="button-sp-area">
-        <button class="weui-btn mini-btn" size="mini" type="default" bindtap="openCamera" role="button" >扫描商品</button>
-        </view>
-    </view>
-    <view class="weui-form__control-area">
-        <view class="weui-cells__group weui-cells__group_form">
-            <view class="weui-cell">
-              <view class="weui-cell__hd"><label class="weui-label">商品名称</label></view>
-              <view class="weui-cell__bd">
-                <input class="weui-input" type="text" placeholder="请输入商品名称" bindinput="inputCargoName" value="{{cargoName}}"/>
-              </view>
-            </view>
-            <view class="weui-cell">
-              <view class="weui-cell__hd"><label class="weui-label">所属品牌</label></view>
-              <view class="weui-cell__bd">
-                <input class="weui-input" type="text" placeholder="请输入所属品牌" bindinput="inputBrand" value="{{brand}}"/>
-              </view>
-            </view>
-            <view class="weui-cell">
-              <view class="weui-cell__hd"><label class="weui-label">所属大类</label></view>
-              <view class="weui-cell__bd text-right">
-                <picker bindchange="bindBigClassChange" value="{{index}}" range="{{bigClassList}}">
-                  <view class="weui-input">{{bigClassList[index]}}</view>
-                </picker>
-              </view>
-              <view class="weui-cell__ft weui-cell__ft_in-access">
-              </view>
-            </view>
-            <view class="weui-cell">
-              <view class="weui-cell__hd"><label class="weui-label">进价</label></view>
-              <view class="weui-cell__bd">
-                <input class="weui-input" type="number" placeholder="请输入商品进价" bindinput="inputPurPrice"/>
-              </view>
-            </view>
-            <view class="weui-cell">
-              <view class="weui-cell__hd"><label class="weui-label">售价</label></view>
-              <view class="weui-cell__bd">
-                <input class="weui-input" type="number" placeholder="请输入商品售价" bindinput="inputPrice"/>
-              </view>
-            </view>
-            <view class="weui-cell">
-            </view>
-            <view class="weui-btn-area">
-              <button class="weui-btn" type="primary" bindtap="submitAddCargoInfo">确定</button>
-            </view>
-          </view>
+<import src="../../component/loading/loading.wxml"></import>
+<template is="loading" data="{{..._loading_}}"></template>
+<view class="weui-form">
+  <view class="weui-form__text-area">
+    <view class="page__desc">商品信息为商品本身属性，如商品名称、进价、售价、生产日期、保质期等</view>
+    <view class="button-sp-area">
+      <button class="weui-btn mini-btn" size="mini" type="default" bindtap="openCamera" role="button" >扫描商品</button>
       </view>
   </view>
+  <view class="weui-form__control-area">
+      <view class="weui-cells__group weui-cells__group_form">
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>商品名称</label></view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" type="text" placeholder="请输入商品名称" bindinput="inputCargoName" value="{{cargoName}}"/>
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label">所属品牌</label></view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" type="text" placeholder="请输入所属品牌" bindinput="inputBrand" value="{{brand}}"/>
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>所属大类</label></view>
+            <view class="weui-cell__bd text-right">
+              <picker bindchange="bindBigClassChange" value="{{index}}" range="{{bigClassList}}" range-key="{{'bigClassName'}}">
+                <view class="weui-input">{{bigClassList[index].bigClassName}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access">
+            </view>
+          </view>
+          <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">生产日期</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <picker mode="date" value="{{creatDate}}"  end="{{todayDate}}" bindchange="bindCreatDateChange">
+                      <view class="weui-input">{{creatDate}}</view>
+                  </picker>
+              </view>
+          </view>
+          <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">过期日期</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <picker mode="date" value="{{pastDate}}" start="{{todayDate}}" bindchange="bindPastDateChange">
+                      <view class="weui-input">{{pastDate}}</view>
+                  </picker>
+              </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>库存数</label></view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" type="number" value="{{totalNum}}" placeholder="请输入库存数" bindinput="inputTotalNum"/>
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>进价</label></view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" type="digit" value="{{purPrice}}" placeholder="请输入商品进价" bindinput="inputPurPrice"/>
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>售价</label></view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" type="digit" placeholder="请输入商品售价" value="{{price}}" bindinput="inputPrice"/>
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label">描述</label></view>
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea" bindinput="inputCargoDesc" placeholder="请输入商品描述" style="height:80px;" />
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="uploader-text">
+              <text>上传图片</text>
+              <block wx:if="{{imagePath && imagePath != ''}}">
+                <image class="delete-image" bindtap="deleteImage" src="../../images/del.png" mode="aspectFit"></image>
+                <image class="uploader-image" data-src="{{imagePath}}" src="{{imagePath}}" bindtap="previewImg"></image>
+              </block>
+              <block wx:else>
+                <image class="upload-image" src="../../images/upload.png" bindtap="doUpload"></image>
+              </block>
+            </view>
+          </view>
+          <view class="weui-cell">
+          </view>
+          <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="submitAddCargoInfo">确定</button>
+          </view>
+        </view>
+    </view>
 </view>

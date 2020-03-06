@@ -1,0 +1,37 @@
+<template name="product">
+    <view class="product-frame-wrap">
+        <view class="product-frame">
+            <image src="{{oneProduct.imagePath}}" style="width: 80rpx;height: 80rpx;"></image>
+            <view class="product-frame-product-frame">
+                <view class="product-frame-product-frame-inner">
+                    <text class="product-product-name">{{oneProduct.stockName}}</text>
+                    <text style="margin-left: 10rpx;font-size: 26rpx;color:#333333">{{oneProduct.totalPrice}}</text>
+                </view>
+                <view class="product-frame-product-frame-desc" wx:if="{{!!oneProduct.prodectDesc}}">
+                    <text class="product-product-desc">{{oneProduct.prodectDesc}}</text>
+                </view>
+                <view class="product-frame-product-refund" wx:if="{{!!oneProduct.weight_str}}">
+                    <text class="product-frame-product-weight" wx:if="{{oneProduct.weight_str!=''}}">{{oneProduct.weight_str}}</text>
+                </view>
+                <view class="product-detail-str">{{oneProduct.one_detail_str}}</view>
+            </view>
+        </view>
+    </view>
+</template>
+<view wx:for="{{order.orderList}}" wx:for-index="idx" wx:for-item="oneProduct" wx:key="{{oneProduct.cargoId}}">
+    <template is="product" data="{{oneProduct:oneProduct}}"></template>
+</view>
+<view style="padding:26rpx;border-top: 20rpx solid #f5f5f5">
+    <view class="order-money-frame1" >
+        <text style="font-size: 26rpx;color:#666666">结算编号</text>
+        <text style="font-size: 26rpx;color:#333333">{{order._id}}</text>
+    </view>
+    <view class="order-money-frame1">
+        <text style="font-size: 26rpx;color:#666666">商品总数</text>
+        <text style="font-size: 26rpx;color:#333333">{{order.cartCount}}</text>
+    </view>
+    <view class="order-money-frame1">
+        <text style="font-size: 26rpx;color:#666666">商品总价</text>
+        <text style="font-size: 26rpx;color:#333333">¥{{order.totalAmount}}</text>
+    </view>
+</view>

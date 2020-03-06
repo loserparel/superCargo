@@ -1,6 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "stockinfo-component": "/components/stockinfo/stockinfo"
-  }
-}

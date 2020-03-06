@@ -1,0 +1,80 @@
+<import src="../../component/backTop/backTop.wxml"></import>
+<view class="kind-list__item-bd" style="margin-top:{{tabHeight+45}}px;">
+  <view class="weui-loadmore" wx:if='{{isRefreshing}}'>
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore-tips">正在刷新...</view>
+  </view>
+  <view class="bigclass-list">
+    <block wx:if="{{bigClassList.length <1}}">
+      <view class="bigclass-item">
+        <view class="bigclass-add-wrap">
+          <view class="bigclass-add-item">
+            <view class="bigclass-add-item-name">
+              <text>暂无商品大类</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="bigclass-item" wx:for="{{bigClassList}}" wx:for-index="index" wx:key="item._id">
+        <block wx:if="{{index == 0 && item._id == ''}}">
+          <view class="bigclass-add-wrap">
+                <view class="bigclass-add-item">
+                  <view class="bigclass-add-item-name">
+                    <input type="text" placeholder="请输入大类名称" bindinput="inputBigClassName"/>
+                  </view>
+                </view>
+                <view bindtap="cancleAdd" class="bigclass-add-item-cancel">
+                  <text class="iconfont icon-quxiao"></text>
+                </view>
+                <view bindtap="sureAdd" class="bigclass-add-item-sure">
+                  <text class="iconfont icon-yixuanze"></text>
+                </view>
+            </view>
+        </block>
+        <block wx:else>
+          <movable-area>
+            <movable-view out-of-bounds="true" direction="horizontal" x="{{item.xmove}}"
+              inertia="true"
+              data-bigclassindex="{{index}}"
+              bindtouchstart="handleTouchStart"
+              bindtouchend="handleTouchEnd"
+              bindchange="handleMovableChange">
+              <view class="bigclass-item-wrap">
+                <view class="bigclass-movable-item">
+                  <block wx:if="{{item.isUpd}}">
+                    <input class="bigclass-movable-item-name" type="text" placeholder="请输入大类名称" value="{{item.bigClassName}}" bindinput="inputUpdBigClassName" data-id="{{item._id}}" bindblur="doUpdBigClass"/>
+                  </block>
+                  <block wx:else>
+                    <view class="bigclass-movable-item-name" data-id="{{item._id}}" bindtap="updateBigClass">{{item.bigClassName}}</view>
+                  </block>
+                  <block wx:if="{{item.priority != 0}}">
+                    <view  class="bigclass-movable-item-totop">
+                      <text bindtap="bigclassPriority" data-index = "{{index}}" data-id="{{item._id}}" class="iconfont icon-zhiding"></text>
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <view class="bigclass-movable-item-totop"></view>
+                  </block>
+                </view>
+              </view>
+            </movable-view>
+          </movable-area>
+          <view class="delete-btn" data-id="{{item._id}}" bindtap="handleDeleteBigclass">删除</view>
+        </block>
+      </view>
+    </block>
+  </view>
+  <view wx:if='{{!isRefreshing}}' class="weui-loadmore">
+    <view wx:if='{{isLoadingMoreData}}'>
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore-tips">正在加载更多...</view>
+    </view>
+    <block wx:elif='{{hasMoreData}}'>
+    </block>
+    <view wx:else>
+      <view class="weui-loadmore-tips">没有更多内容啦</view>
+    </view>
+  </view>
+</view>

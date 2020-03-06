@@ -1,0 +1,51 @@
+<import src="../../component/loading/loading.wxml"></import>
+<template is="loading" data="{{..._loading_}}"></template>
+<import src="../../component/backTop/backTop.wxml"></import>
+<template is="backTop" data="{{..._backTop_}}"></template>
+<view class="page">
+  <view class="weui-tab">
+      <view class="weui-navbar" id="weui-navb">
+          <block wx:for="{{tabs}}" wx:key="*this">
+              <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                  <view class="weui-navbar__title">{{item.text}}</view>
+              </view>
+          </block>
+      </view>
+      <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+            <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" id="{{type}}" />
+            <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                <icon type="clear" size="14"></icon>
+            </view>
+          </view>
+          <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+              <icon class="weui-icon-search" type="search" size="14"></icon>
+              <view class="weui-search-bar__text">搜索</view>
+          </label>
+        </view>
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        <image class="add_card_img" bindtap="clickAddBtn" id="{{type}}" src="../../images/add.png" ></image>
+      </view>
+      <view class="menu_model" hidden="{{ menuModalHide }}" catchtap="hiddenMenu">
+        <li class="menu" style="left:{{windowWidth -105}}px;">
+          <ul class="tooltip" >
+            <li wx:for="{{menuArr}}" wx:for-index="index" id="{{index}}" wx:key="id">
+              <a href="#" id="{{menuArr[index].id}}"  class="{{menuArr[index].type}}" catchtap="operationMenu">{{menuArr[index].text}}</a>
+            </li>
+          </ul>
+        </li>
+      </view>
+      <view class="weui-tab__panel">
+          <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+              <classifyinfo-component id = "{{tabs[0].componentId}}" limit = "{{limit}}" type = "{{tabs[0].type}}" hasMoreData="{{hasMoreData}}"  isRefreshing = "{{isRefreshing}}"  inputVal ="{{inputVal}}" bind:classifyEvent="changeRefreshStat"  isLoadingMoreData = "{{isLoadingMoreData}}">
+              </classifyinfo-component>
+          </view>
+          <view class="weui-tab__content" hidden="{{activeIndex != 1}}" >
+              <stockinfo-component id = "{{tabs[1].componentId}}" isRefreshing = "{{isRefreshing}}" limit = "{{limit}}" type = "{{tabs[1].type}}"  inputVal ="{{inputVal}}" isLoadingMoreData = "{{isLoadingMoreData}}" hasMoreData="{{hasMoreData}}" bind:classifyEvent="changeRefreshStat">
+              </stockinfo-component>
+          </view>
+      </view>
+  </view>
+</view>

@@ -1,0 +1,15 @@
+var _ = {
+  LOCATION: "LOCATION",
+  USER_INFO: "USER_INFO",
+  USER_MP: "USER_MP",
+  USER_AUTHORIZE: "USER_AUTHORIZE",
+  UUID: "UUID",
+  UID: "UID",
+  OPENID: "OPENID",
+  ENV: "ENV",
+  SESSION_KEY:"SESSION_KEY"
+}
+
+module.exports = {
+  STORAGE: _
+};

@@ -1,25 +1,26 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/sale/sale",
+    "pages/classify/classify",
     "pages/stock/stock",
-    "pages/addcargo/addcargo",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/im/room/room"
+    "pages/mine/mine",
+    "pages/login/login",
+    "pages/exit/exit",
+    "pages/cargoMenu/cargoMenu",
+    "pages/addCargoInfo/addCargoInfo",
+    "pages/manageCargoInfo/manageCargoInfo",
+    "pages/addStockInfo/addStockInfo",
+    "pages/todayAccount/todayAccount",
+    "pages/historyAccount/historyAccount",
+    "pages/orderDetail/orderDetail",
+    "pages/agreement/agreement",
+    "pages/manageStockInfo/manageStockInfo",
+    "pages/fairy/fairy"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#EDEDED",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "百货帮",
     "navigationBarTextStyle": "black"
@@ -34,13 +35,19 @@
         "pagePath": "pages/sale/sale",
         "iconPath": "images/sale.png",
         "selectedIconPath": "images/sale2.png",
-        "text": "前台"
+        "text": "收银台"
       },
       {
-        "pagePath": "pages/stock/stock",
-        "iconPath": "images/putin.png",
-        "selectedIconPath": "images/putin2.png",
-        "text": "入库"
+        "pagePath": "pages/classify/classify",
+        "iconPath": "images/classify.png",
+        "selectedIconPath": "images/classify2.png",
+        "text": "商品库"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine2.png",
+        "text": "我的"
       }
     ]
   },
