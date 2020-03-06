@@ -1,0 +1,45 @@
+<import src="../../component/loading/loading.wxml"></import>
+<template is="loading" data="{{..._loading_}}"></template>
+<view class="weui-form">
+    <view class="weui-form__text-area">
+      <view class="button-sp-area">
+        <button class="weui-btn mini-btn" size="mini" type="default" bindtap="openCamera" role="button" >扫描商品</button>
+      </view>
+    </view>
+    <view class="weui-form__control-area">
+      <view class="weui-cells__group weui-cells__group_form">
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>商品号</label></view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" type="number" pattern="[0-9]*" bindinput="inputStockNo" bindblur="checkStockNo" value="{{stockNo}}"/>
+            </view>
+            <view class="random_btn">
+              <image class="random-image" bindtap="randomCargono" src="../../images/random.png"></image>
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>商品名称</label></view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" type="text"  disabled='disabled'  value="{{cargoName}}"/>
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>商品进价</label></view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" type="number" disabled='disabled'  bindinput="" value="{{purPrice}}"/>
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd"><label class="weui-label"><label class="required_label">*</label>商品售价</label></view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" type="number" disabled='disabled'   bindinput="" value="{{price}}"/>
+            </view>
+          </view>
+          <view class="weui-cell">
+          </view>
+          <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="submitAddStock">确定</button>
+          </view>
+      </view>
+    </view>
+  </view>
